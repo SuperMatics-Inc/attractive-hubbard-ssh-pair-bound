@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[hmargin=1in,vmargin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\Deltaop}{\Delta}
+\newcommand*{\PAPERDOI}{10.5281/zenodo.24406987}
+\newcommand*{\SUPPDOI}{10.5281/zenodo.24406989}
+\newcommand*{\REPOURL}{https://github.com/SuperMatics-Inc/attractive-hubbard-ssh-pair-bound}
+\title{An explicit pair bound for the attractive Hubbard model with bond SSH coupling}
+\author{Davis Rens\\SuperMatics Inc.\\\href{https://orcid.org/0000-0001-5839-5197}{ORCID 0000-0001-5839-5197}}
+\date{\smash{\parbox{.98\linewidth}{\centering\scriptsize
+Article DOI: \href{https://doi.org/10.5281/zenodo.24406987}{\PAPERDOI}\quad Supplement DOI: \href{https://doi.org/10.5281/zenodo.24406989}{\SUPPDOI}\\
+Source repository: \expandafter\url\expandafter{\REPOURL}
+}}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove a frequency-uniform exponential bound on equal-time on-site pair correlations for the spinful attractive Hubbard model with bond SSH coupling on square tori. For every real chemical potential and every positive $U_{\rm eff}$, spring constant $K$, and oscillator frequency $\Omega$, the conditions $\beta t^2/U_{\rm eff}\le 2^{-27}$ and $\beta g^2/K\le 2^{-13}$ imply
+\[
+\left|\langle\Deltaop_x^\dagger\Deltaop_y\rangle\right|
+\le \frac{1965840}{475579}\left(\frac{48645}{524224}\right)^{d(x,y)},
+\qquad
+\sup_x\sum_y\left|\langle\Deltaop_x^\dagger\Deltaop_y\rangle\right|<3.
+\]
+The result holds on every torus of side at least four, is uniform in $\Omega$, and transfers to thermodynamic canonical sequences at every total filling. In particular, the pair-order temperature obeys $k_{\rm B}T_{\rm pair}\le 2^{27}(t^2/U_{\rm eff}+g^2/K)$. The proof keeps the bond oscillators in the Hamiltonian and uses their exact thermal covariance, rather than an instantaneous or frequency-limited approximation.
+\end{abstract}
+
+\section{Introduction}
+
+In an SSH-type electron-lattice model, a displacement changes a bond hopping amplitude instead of acting only as a local potential. This Peierls coupling makes the phonon coordinate part of the kinetic energy and prevents a direct reduction to a static on-site attraction. Su, Schrieffer, and Heeger studied soliton domain walls between bond-alternating structures in trans-polyacetylene; later model work found light bipolarons in a one-dimensional Peierls problem and estimated a BKT scale for a distinct two-dimensional bond-oscillator model \cite{su,sous,zhang}. These model results motivate a mathematical question about pair correlations when bond oscillators remain dynamical.
+
+Here we consider the spinful attractive Hubbard model with one harmonic oscillator on each nearest-neighbor bond. We prove a quantitative clustering estimate at all positive oscillator frequencies, including regimes without a cutoff on $t/U_{\rm eff}$ or on $g^2/(K U_{\rm eff})$. The mechanism is an all-orders expansion in connected spatial supports. Its constants depend on the dimensionless combinations $\beta t^2/U_{\rm eff}$ and $\beta g^2/K$, but not on $\Omega$. The conclusion is an upper bound on a possible pair-order temperature in this specified model, not evidence for pair order or a lower bound on a transition temperature.
+
+\section{Model and results}
+
+Let $\Lambda_L=(\mathbb{Z}/L\mathbb{Z})^2$ be a square torus with $L\ge4$, nearest-neighbor edge set $\mathcal{E}_\Lambda$, and graph distance $d_\Lambda$. There are two fermion modes $c_{x\sigma}$ at each site, with $\sigma\in\{\uparrow,\downarrow\}$, and a coordinate $X_e$ and momentum $P_e$ for each bond. Set $n_x=n_{x\uparrow}+n_{x\downarrow}$ and $n_{x,\mathrm{odd}}=(n_{x\uparrow}-n_{x\downarrow})^2$, the projection onto singly occupied states. In units with $\hbar=1$, the Hamiltonian is
+\begin{align}
+H_\Lambda&=D_0+V_t+V_g+\sum_{e\in\mathcal{E}_\Lambda}H_{\mathrm{ph},e},\notag\\
+D_0&=\sum_{x\in\Lambda}\left(\frac{U_{\rm eff}}2 n_{x,\mathrm{odd}}-\mu n_x\right),\notag\\
+V_t&=-t\sum_{e=\{x,y\}\in\mathcal{E}_\Lambda}T_e,\notag\\
+V_g&=g\sum_{e\in\mathcal{E}_\Lambda}X_eT_e,\notag\\
+T_e&=\sum_{\sigma\in\{\uparrow,\downarrow\}}
+\left(c_{x\sigma}^\dagger c_{y\sigma}+c_{y\sigma}^\dagger c_{x\sigma}\right),\notag\\
+H_{\mathrm{ph},e}&=\frac{P_e^2}{2m}+\frac K2 X_e^2.
+\end{align}
+The canonical commutator is $[X_e,P_{e'}]=i\delta_{ee'}$, and $\Omega=\sqrt{K/m}>0$. We take $t,g\ge0$ and $U_{\rm eff},K,m,\beta>0$, with $\mu\in\mathbb{R}$. Set $\Deltaop_x=c_{x\downarrow}c_{x\uparrow}$; angle brackets denote the finite-volume grand-canonical expectation unless stated otherwise.
+
+\begin{theorem}[Frequency-uniform pair clustering]
+Suppose
+\[
+\frac{\beta t^2}{U_{\rm eff}}\le2^{-27},\qquad
+\frac{\beta g^2}{K}\le2^{-13}.
+\]
+For every $L\ge4$, every $\mu\in\mathbb{R}$, and all distinct $x,y\in\Lambda_L$,
+\[
+\left|\langle\Deltaop_x^\dagger\Deltaop_y\rangle\right|
+\le A q^{d_\Lambda(x,y)},\qquad
+A=\frac{1965840}{475579},\quad q=\frac{48645}{524224}.
+\]
+Moreover, $|\langle\Deltaop_x^\dagger\Deltaop_x\rangle|\le1$ and
+\[
+\sup_{x\in\Lambda_L}\sum_{y\in\Lambda_L}
+\left|\langle\Deltaop_x^\dagger\Deltaop_y\rangle\right|
+\le \frac{308086835615302339}{107564263537529539}<3.
+\]
+All these constants are independent of $L$, $\mu$, and $\Omega>0$.
+\end{theorem}
+
+\begin{theorem}[Canonical transfer]
+Under the hypotheses above, for every fixed nonzero displacement $r\in\mathbb{Z}^2\setminus\{0\}$, the pairwise bound $\limsup_{L\to\infty}|\langle\Deltaop_0^\dagger\Deltaop_r\rangle_{L,\mathrm{can}}|\le A q^{d(0,r)}$ holds in thermodynamic canonical sequences with total density $N/|\Lambda_L|\to\nu$ for every $\nu\in(0,2)$. It also holds in balanced spin-sector sequences with $N_\uparrow/|\Lambda_L|=N_\downarrow/|\Lambda_L|\to a$ for every $a\in(0,1)$. At total fillings $\nu=0$ and $\nu=2$ the off-site pair correlation vanishes, so the estimate extends to all $\nu\in[0,2]$. This is a thermodynamic-limit statement and does not assert a uniform finite-volume canonical bound.
+\end{theorem}
+
+\begin{corollary}[Pair-temperature ceiling]
+Consequently, any thermodynamic pair-order transition temperature satisfies
+\[
+k_{\rm B}T_{\rm pair}
+\le \max\!\left(2^{27}\frac{t^2}{U_{\rm eff}},\,2^{13}\frac{g^2}{K}\right)
+\le 2^{27}\left(\frac{t^2}{U_{\rm eff}}+\frac{g^2}{K}\right).
+\]
+\end{corollary}
+
+\paragraph{Limiting cases.}
+When $g=0$, the constants reduce to $q=5/64$, $A=240/59$, and the cluster budget $75/236$, recovering the attractive Hubbard bound of the strong-coupling companion and its Hubbard-Holstein extension \cite{strongcoupling,hubbardholstein}. When $t=0$, the theorem remains valid under $\beta g^2/K\le2^{-13}$. In this limit the actual endpoint for the source cluster budget to remain below one is $\frac12\log(2569/2565)$; the rational majorant gives the sufficient threshold $2/2567$, and the largest dyadic threshold is $2^{-11}$, at which the majorant is at most $2025/3554<1$. Pure SSH at $U_{\rm eff}=0$ is not covered because the atomic gap used to obtain the uniform one-site trace-ratio bound requires $U_{\rm eff}>0$.
+
+\section{Proof outline}
+
+\subsection{Self-adjointness and the trace-norm Dyson bound}
+
+Write $H_0=D_0+\sum_eH_{\mathrm{ph},e}$ and $V=V_t+V_g$. On each bond $\|T_e\|=2$ and $X_e^2\le 2H_{\mathrm{ph},e}/K$. Thus $X_eT_e$ has relative bound zero with respect to $H_0$, while $V_t$ is bounded. The relative-bound self-adjointness theorem gives a self-adjoint, bounded-below Hamiltonian on the domain of $H_0$; its resolvent is compact and its Gibbs operator is trace class on a finite torus.
+
+For $0<\delta\le\beta$, the oscillator creation and annihilation operators between free semigroups obey a bound of the form $C(\delta^{-1/2}+1)$. In a Dyson term with $N$ insertions, one of its $N+1$ time gaps is at least $\beta/(N+1)$. The semigroup across that gap supplies a trace-norm factor that separates into the finite electronic trace and the product of the free oscillator traces. The remaining insertions are bounded by the integrable inverse-square-root gap estimates. Integrating over the time simplex gives a gamma-function denominator, which dominates the polynomial growth in $N$ from the longest-gap trace factor. The Dyson series therefore converges absolutely in trace norm. Iterated Duhamel expansion identifies its sum with $e^{-\beta H_\Lambda}$, justifying the rearrangements used in the correlation expansion.
+
+\subsection{Thermal covariance and Wick integration}
+
+For one free bond oscillator, define
+\[
+C_\beta(u)=\frac{\cosh\!\left(\Omega(\beta/2-u)\right)}
+{2m\Omega\sinh(\beta\Omega/2)},\qquad 0\le u\le\beta.
+\]
+The thermal trace of an odd product of coordinates vanishes, and the trace of an even ordered product is the sum over pairings of products of $C_\beta$ evaluated at the time separations. The covariance is positive and satisfies the exact identity
+\[
+\int_0^\beta C_\beta(|u-v|)\,du=\frac1K
+\qquad (v\in[0,\beta]).
+\]
+This identity holds at every positive $\Omega$, including arbitrarily small or large frequency. For a bond used $2r$ times by the SSH interaction, integration of its Wick pairings and summation over $r\ge1$ gives the factor $e^{2\beta g^2/K}-1$. Under the stated hypothesis, the rational bound $e^x-1\le x/(1-x/2)$ controls this contribution without introducing a frequency or a ratio $g^2/(K U_{\rm eff})$ cutoff.
+
+\subsection{Polymer activities and explicit constants}
+
+Expanding the trace in bond insertions and grouping connected edge supports produces a hard-core polymer gas: polymers with disjoint vertex sets factor, and intersecting supports are incompatible. Absolute values of the electronic hopping matrix elements are bounded by a nonnegative bond matrix $B_e$ with norm $2$. An exact edge sum-of-squares estimate gives, for every $\alpha>0$,
+\[
+g_{\rm SOS} B_e\le \alpha(n_{x,\mathrm{odd}}+n_{y,\mathrm{odd}})
++\frac{2g_{\rm SOS}^2}{\alpha}I.
+\]
+Apply this with $g_{\rm SOS}=2^{10}t$ and $\alpha=U_{\rm eff}/16$. The resulting finite-support trace is controlled by an atomic trace ratio at most $5/4$, uniformly in $\mu$. The hopping contribution to the exponent per edge is at most $1/4$.
+
+The oscillator integration and this hopping estimate give the physical-edge activity scale
+\[
+\varepsilon_{\rm phys}
+=\frac{4}{3\cdot2^{10}}\left(1+\frac{2}{8191}\right)
++\frac{2}{8191}
+=\frac{3243}{2096896},
+\qquad
+\varepsilon_{\rm src}=\frac{4}{3\cdot2^{11}}=\frac1{1536}
+\]
+for a source edge. Since the square lattice has degree $4$, the connected-support count and the Koteck\'y-Preiss site criterion \cite{koteckyPreiss} reduce the physical cluster sum to a geometric series with
+\[
+q_{\rm GC}=60\varepsilon_{\rm phys}=\frac{48645}{524224},\qquad
+b_{\rm GC}=\frac{15}{4}\frac{q_{\rm GC}}{1-q_{\rm GC}}
+=\frac{729675}{1902316}<1.
+\]
+Every marked polymer joining $x$ to $y$ has at least $d_\Lambda(x,y)$ edges. Summing over all such polymers, the support deletion estimate bounds their total contribution by
+\[
+\frac{15}{4}\sum_{k\ge d_\Lambda(x,y)}q_{\rm GC}^k
+=\frac{15}{4(1-q_{\rm GC})}q_{\rm GC}^{d_\Lambda(x,y)},
+\]
+which gives the constants in the theorem. Summing distance shells, each of which contains at most $4d$ sites at distance $d$, yields the stated row sum.
+
+\subsection{Real source and canonical transfer}
+
+For a nonzero displacement $r$, add the real, number-conserving source
+\[
+-\xi\sum_{x\in\Lambda_L}
+\left(e^{i\theta}\Deltaop_x^\dagger\Deltaop_{x+r}
++e^{-i\theta}\Deltaop_{x+r}^\dagger\Deltaop_x\right).
+\]
+The source-augmented graph has degree $6$, and its pressure is analytic for $|\xi|<\xi_0$, with $\xi_0=2^{-14}\beta^{-1}$. The source cluster ratio and site budget are
+\[
+q_{\rm src}=135\varepsilon_{\rm phys}=\frac{437805}{2096896},
+\qquad
+b_{\rm src}=\frac{15}{4}\frac{q_{\rm src}}{1-q_{\rm src}}
+=\frac{6567075}{6636364}<1.
+\]
+The derivative at zero of the normalized log-partition density $|\Lambda_L|^{-1}\log(Z_\Lambda(\xi)/Z_0)$ is
+\[
+2\beta\operatorname{Re}\left(e^{i\theta}\langle\Deltaop_0^\dagger\Deltaop_r\rangle\right).
+\]
+Its analytic remainder therefore turns the exponential grand-canonical estimate into a source inequality uniform in volume and chemical potential.
+
+To pass to a canonical sequence, tile a large torus by open blocks and remove hopping terms crossing block boundaries. The SSH hopping on such a boundary is unbounded, so a direct bounded-operator estimate is unavailable. Instead, the boundary oscillators are bracketed by replacing their spring constants by $K/2$ and $2K$; the resulting log-partition error is proportional to the number of boundary bonds. It vanishes per site as block size grows. The thermodynamic block argument gives the concave canonical free energy and its Legendre relation to the grand-canonical pressure. A supporting chemical potential, source convexity, and the analytic pressure estimate then transfer the pair bound to the thermodynamic canonical limits. This is the real-source Legendre transfer used in the strong-coupling companion, with the boundary comparison adapted to the SSH term \cite{strongcoupling}.
+
+\section{Discussion and data availability}
+
+The estimate applies to the full oscillator Hilbert space and is uniform in frequency. Its two hypotheses have distinct roles: the atomic attraction controls hopping supports, while the integrated thermal covariance controls bond fluctuations. Their combination gives an explicit ceiling on the temperature at which nonexponential on-site pair correlations could occur. It does not establish a pairing transition, nor does it make a claim about a material or an experimental measurement.
+
+The replay supplement (\texttt{replay/replay.py}) is archived on Zenodo at DOI \href{https://doi.org/10.5281/zenodo.24406989}{\nolinkurl{\SUPPDOI}} and includes its run instructions. Its exact rational and outward-rounded interval checks validate finite algebraic identities and numerical constants. Separate finite-basis numerical checks are sanity checks only. The replay does not formalize the analytic functional analysis, oscillator trace identities, infinite cluster expansion, or thermodynamic canonical argument.
+
+AI agents generated the proofs, code and drafts under D. Rens' direction, and separate AI agents performed the independent reviews. This preprint has not been peer reviewed.
+
+{\raggedright\small\bibliographystyle{plain}\bibliography{refs}\par}
+\end{document}
